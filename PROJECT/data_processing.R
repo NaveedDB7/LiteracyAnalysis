@@ -102,3 +102,4 @@ rpart.plot(dt_model)
 
 
 write_csv(data , "C:\\Users\\navee\\OneDrive\\Desktop\\PROJECT\\data.csv")
+
