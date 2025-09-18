@@ -65,20 +65,35 @@ print(cor_low)
 
 #t tests
 
-t_test_lit_gap <- t.test(data$Literacy_gap, data$BPL)
-print(t_test_lit_gap)
+#t_test_lit_gap <- t.test(data$Literacy_gap, data$BPL)
+#print(t_test_lit_gap)
 
-t_test_lit_gap <- t.test(data$Literacy_gap, data$CRW)
-print(t_test_lit_gap)
+#t_test_lit_gap <- t.test(data$Literacy_gap, data$CRW)
+#print(t_test_lit_gap)
 
-t_test_lit_gap <- t.test(data$Literacy_gap, data$ChildMarr)
-print(t_test_lit_gap)
+#t_test_lit_gap <- t.test(data$Literacy_gap, data$ChildMarr)
+#print(t_test_lit_gap)
 
-t_test_lit_gap <- t.test(data$Literacy_gap, data$Turnout)
-print(t_test_lit_gap)
+#t_test_lit_gap <- t.test(data$Literacy_gap, data$Turnout)
+#print(t_test_lit_gap)
 
-#multiple regression , as there are multiple variables and lots of redundant computing, 
-#only one variable is computed here and the rest was computed with the help of AI tools.
+# Literacy Gap vs BPL
+cor_test_bpl <- cor.test(data$Literacy_gap, data$BPL, use = "complete.obs", method = "pearson")
+print(cor_test_bpl)
+
+# Literacy Gap vs CRW (crimes against women)
+cor_test_crw <- cor.test(data$Literacy_gap, data$CRW, use = "complete.obs", method = "pearson")
+print(cor_test_crw)
+
+# Literacy Gap vs Child Marriage
+cor_test_child <- cor.test(data$Literacy_gap, data$ChildMarr, use = "complete.obs", method = "pearson")
+print(cor_test_child)
+
+# Literacy Gap vs Voter Turnout
+cor_test_turnout <- cor.test(data$Literacy_gap, data$Turnout, use = "complete.obs", method = "pearson")
+print(cor_test_turnout)
+
+#multiple regression 
 
 lm_model <- lm(BPL ~ literacyTotal + Literacy_gap, data = data)
 summary(lm_model)
@@ -102,4 +117,5 @@ rpart.plot(dt_model)
 
 
 write_csv(data , "C:\\Users\\navee\\OneDrive\\Desktop\\PROJECT\\data.csv")
+
 
